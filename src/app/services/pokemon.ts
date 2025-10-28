@@ -1,8 +1,8 @@
 // src/app/services/pokemon.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +29,9 @@ export class PokemonService {
   getPokemonSprite(pokemonData: any) {
     // ejemplo de acceso a sprite: pokemonData.sprites.front_default
     return pokemonData?.sprites?.front_default || null;
+  }
+
+  getPokemonDetails(url: string): Observable<any> {
+    return this.http.get<any>(url);
   }
 }
